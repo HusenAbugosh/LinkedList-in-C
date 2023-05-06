@@ -402,7 +402,6 @@ then the function should change it to 2->1->4->3->5,
  and if the linked list is 1->2->3->4->5->6 
 then the function should change it to 2->1->4->3->6->5.
 */
-
 Node* swap(Node* head){
 
     // cheack if the head or 2nd node are null if it is we acnt swap:
@@ -427,30 +426,59 @@ Node* swap(Node* head){
 }
     
 
+/*
+Question 6) Write a function called RemoveDuplicates() 
+that takes a list sorted in increasing order and deletes any duplicate nodes from the list.
+*/
+
+
+void RemoveDuplicates(Node* head) {
+
+//Since the list is sorted in increasing order, the duplicate elements will always be consecutive
+    Node* current_node = head;
+    Node* next_node;
+    Node* temp;
+
+    while (current_node != NULL && current_node->next != NULL) {
+        next_node = current_node->next;
+
+        if (current_node->data == next_node->data) {
+            temp = next_node;
+            current_node->next = next_node->next;
+            free(temp);
+        } else {
+            current_node = current_node->next;
+        }
+    }
+}
 
 
 
 
 
 
-int main(void ){
+int main(void){
 
  // declear a LinkeList:
     Node* myList = NULL;
 
     insert(&myList, 1);
+    insert(&myList, 1);
     insert(&myList, 2);
+    insert(&myList, 3);
     insert(&myList, 3);
     insert(&myList, 4);
     insert(&myList, 5);
+    insert(&myList, 1);
+    insert(&myList, 5);
+    insert(&myList, 6);
 
-
-    printf("Original List:\n");
+    printf("Original list:\n");
     display(myList);
 
-    myList = swap(myList);
+    RemoveDuplicates(myList);
 
-    printf("List after swapping pairwise elements:\n");
+    printf("List after removing duplicates:\n");
     display(myList);
 
 return 0;
