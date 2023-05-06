@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-// Made bu Husain Abugosh / 2023 
+// Made by Husain Abugosh / 2023 
 
 /*  single linked list  chain of nodes each nodes have :
 1- place to save the data.
